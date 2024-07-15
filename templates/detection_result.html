@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <!-- site metas -->
+    <title>Greeno</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- bootstrap css -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}"
+    />
+    <!-- style css -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assets/css/style.css') }}"
+    />
+    <!-- Responsive-->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assets/css/responsive.css') }}"
+    />
+    <!-- fevicon -->
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='assets/images/fevicon.png') }}"
+      type="image/gif"
+    />
+    <!-- Scrollbar Custom CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assets/css/jquery.mCustomScrollbar.min.css') }}"
+    />
+    <!-- Tweaks for older IEs-->
+    <link
+      rel="stylesheet"
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+      media="screen"
+    />
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script
+    ><![endif]-->
+    <style>
+      /* Menghapus latar belakang hijau di atas form deteksi */
+      body.main-layout {
+        background-color: #fff; /* Setel latar belakang halaman menjadi putih */
+      }
+
+      .deteksi {
+        background-color: #fff; /* Setel latar belakang bagian deteksi menjadi putih */
+        padding-top: 100px; /* Atur padding jika diperlukan */
+      }
+    </style>
+  </head>
+  <!-- body -->
+  <body class="main-layout">
+    <!-- loader  -->
+    <div class="loader_bg">
+      <div class="loader">
+        <img
+          src="{{ url_for('static', filename='assets/images/loading.gif') }}"
+          alt="#"
+        />
+      </div>
+    </div>
+    <!-- end loader -->
+    <!-- header -->
+    <header>
+      <!-- header inner -->
+      <div class="header">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+              <div class="logo">
+                <a href="/">
+                  <img
+                    src="{{ url_for('static', filename='assets/images/logo.png') }}"
+                    alt="#"
+                  />
+                </a>
+              </div>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+              <div class="menu-area">
+                <div class="limit-box">
+                  <nav class="main-menu">
+                    <ul class="menu-area-main">
+                      <li class="active"><a href="#">Home</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end header inner -->
+    </header>
+    <!-- end header -->
+    <!-- deteksi section -->
+    <div id="deteksi" class="deteksi">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="titlepage">
+              <h2>Deteksi Bunga</h2>
+              <span>Unggah gambar bunga untuk mendeteksi jenis bunga</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <form
+              id="detectionForm"
+              action="{{ url_for('upload_video') }}"
+              method="POST"
+              enctype="multipart/form-data"
+              style="
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+              "
+            >
+              <div class="form-group">
+                <label for="videoUpload">Unggah Video</label>
+                <input
+                  type="file"
+                  class="form-control-file"
+                  id="videoUpload"
+                  name="video"
+                  accept="video/*"
+                  capture="camera"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Deteksi</button>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <center>
+                <span>Hasil deteksi jenis bunga dengan upload video</span>
+              <video controls width="80%">
+                <source src="{{ url_for('static', filename='uploads/' + filename) }}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </center>
+          </div>
+      </div>
+    </div>
+    <!-- end deteksi section -->
+    <!-- footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <center>
+              &copy; 2024 All Rights Reserved. Design by <a href="#">Greeno</a>
+            </center>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- end footer -->
+    <!-- Javascript files-->
+    <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/custom.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script type="text/javascript">
+      // seleksi elemen video
+      var video = document.querySelector("#video-webcam");
+  
+      // minta izin user
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+  
+      // jika user memberikan izin
+      if (navigator.getUserMedia) {
+          // jalankan fungsi handleVideo, dan videoError jika izin ditolak
+          navigator.getUserMedia({ video: true }, handleVideo, videoError);
+      }
+  
+      // fungsi ini akan dieksekusi jika  izin telah diberikan
+      function handleVideo(stream) {
+          video.srcObject = stream;
+      }
+  
+      // fungsi ini akan dieksekusi kalau user menolak izin
+      function videoError(e) {
+          // do something
+          alert("Izinkan menggunakan webcam untuk demo!")
+      }
+  </script>
+  </body>
+</html>
